@@ -284,6 +284,9 @@ begin
     SaveBlockFromFile(GameName,FileTAP, FileDDB, $8400);
     // Save the SDG
     SDGAddress := $FFFF - filesize(FileSDG) +1;
+    WriteLn('SDG Address: ' + IntToStr(SDGAddress));
+    WriteLn('Database Size: ' + IntToStr(filesize(fileDDB)+ $8400));
+    WriteLn('Free Memory: ' + IntToStr(SDGAddress - (filesize(fileDDB)+ $8400)));  
     if (filesize(fileDDB)+ $8400 > SDGAddress) then Error('DDB + SDG exceed RAM size');
     GameName[10] := 'G';
     Blockread(FileSDG, Buffer, filesize(FileSDG));
